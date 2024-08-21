@@ -1,0 +1,70 @@
+{
+  "openworkflow": "1.0.0",
+  "info": {
+    "title": "CRUD Workflow Example",
+    "version": "0.1.0"
+  },
+  "workflow": {
+    "start": {
+      "function": "count",
+      "description": "Get the Storage list",
+      "arguments": {},
+      "results": {
+        "count": 0
+      },
+      "next":"sleep1second"
+    },
+    "sleep1second": {
+      "function": "sleep",
+      "description": "sleep 1000 milliseconds",
+      "arguments": {
+        "milliseconds": 5000
+      },
+      "results": {},
+      "next": "step2"
+    },
+    "step2": {
+      "function": "create",
+      "description": "add Text",
+      "arguments": {
+        "text": "Hello, world!"
+      },
+      "results": {
+        "id": 0
+      },
+      "next":"step3"
+    },
+    "step3": {
+      "function": "read",
+      "description": "read text just added",
+      "arguments": {
+        "id": "#/step2/results/id"
+      },
+      "results": {
+        "text": ""
+      },
+      "next":"step4"
+    },
+    "step4": {
+      "function": "update",
+      "description": "read text just added",
+      "arguments": {
+        "id": "#/step2/results/id",
+        "text": "New Hello, world"
+      },
+      "results": {},
+      "next":"end"
+    },
+    "end": {
+      "function": "read",
+      "description": "read text just updated",
+      "arguments": {
+        "id": "#/step2/results/id"
+      },
+      "results": {
+        "text": ""
+      },
+      "next": "null"
+    }
+  }
+}

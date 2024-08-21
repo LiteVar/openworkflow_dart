@@ -1,0 +1,22 @@
+{
+  "opentool": "1.0.0",
+  "info": {
+    "title": "System APIs",
+    "version": "1.0.0"
+  },
+  "functions": [
+    {
+      "name": "sleep",
+      "description": "Await milliseconds",
+      "parameters": [
+        {
+          "name": "milliseconds",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "returns": {}
+    }
+  ]
+}
